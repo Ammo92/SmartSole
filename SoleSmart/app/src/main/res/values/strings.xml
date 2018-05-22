@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SoleSmart</string>
+    <string name="solesmart">SoleSmart</string>
+    <string name="power">Power  </string>
+    <string name="temperature">Temperature</string>
+    <string name="calendrier">Calendrier</string>
+</resources>
