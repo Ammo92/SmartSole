@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.connect) void ClickConnectButton() {
         String loginText = login.toString();
         String passwordText = password.toString();
-        Intent intent = new Intent(MainActivity.this, Home.class);
+        Intent intent = new Intent(MainActivity.this, Tabs.class);
         startActivity(intent);
     }
 }
