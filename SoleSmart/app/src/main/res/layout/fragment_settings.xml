@@ -1,0 +1,96 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.developpement.guide.solesmart.Calendar">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solesmart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:layout_marginTop="25dp"
+        />
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:text="@string/parametres"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"/>
+
+
+    <ImageView
+        android:id="@+id/langageImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/world"
+        app:layout_constraintBottom_toBottomOf="@id/titleLanguage"
+        app:layout_constraintTop_toTopOf="@+id/titleLanguage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="15dp"
+        />
+
+
+    <TextView
+        android:id="@+id/titleLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/guideLineSettings"
+        android:text="@string/language"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/langageImage"
+        android:layout_marginLeft="15dp"
+        />
+
+    <Button
+        android:id="@+id/buttonFrench"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/titleLanguage"
+        app:layout_constraintTop_toTopOf="@id/titleLanguage"
+        app:layout_constraintBottom_toBottomOf="@id/titleLanguage"
+        android:text="@string/francais"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_marginLeft="25dp"/>
+
+    <Button
+        android:id="@+id/buttonEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/buttonFrench"
+        app:layout_constraintTop_toTopOf="@id/titleLanguage"
+        app:layout_constraintBottom_toBottomOf="@id/titleLanguage"
+        android:text="@string/english"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        />
+
+
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideLineSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40"
+        />
+
+</android.support.constraint.ConstraintLayout>
