@@ -45,7 +45,8 @@ public class Tabs extends AppCompatActivity {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Home(), "Home");
-        adapter.addFragment(new Calendar(), "Movie");
+        adapter.addFragment(new Calendar(), "Calendar");
+        adapter.addFragment(new Step(), "Step");
         viewPager.setAdapter(adapter);
     }
 
