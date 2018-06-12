@@ -47,7 +47,6 @@ public class Tabs extends AppCompatActivity {
         adapter.addFragment(new Home(), "Home");
         adapter.addFragment(new Calendar(), "Calendar");
         adapter.addFragment(new Step(), "Step");
-        adapter.addFragment(new Battery(), "Battery");
         adapter.addFragment(new Settings(), "Settings");
         viewPager.setAdapter(adapter);
     }

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.IDNA;
 
+import java.sql.Date;
+
 /**
  * Created by KGULJIN on 31/05/2018.
  */
@@ -22,6 +24,8 @@ public class InfoBDD {
     private static final int NUM_COL_CALORIES = 1;
     private static final String COL_STEP = "Pas";
     private static final int NUM_COL_STEP  = 2;
+    private static final String COL_DATE = "Date";
+    private static final int NUM_COL_DATE = 3;
 
     private SQLiteDatabase bdd;
 
@@ -49,17 +53,18 @@ public class InfoBDD {
         //on lui ajoute une valeur associée à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(COL_CALORIES, info.getCalorie());
         values.put(COL_STEP, info.getPas());
+        values.put(COL_DATE,  String.valueOf(info.getDate()));
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_INFO, null, values);
     }
 
-    public int updateInfo(int id, Information info){
+    public int updateInfo(Date date, Information info){
         //La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simplement préciser quel livre on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
         values.put(COL_CALORIES, info.getCalorie());
         values.put(COL_STEP, info.getPas());
-        return bdd.update(TABLE_INFO, values, COL_ID + " = " +id, null);
+        return bdd.update(TABLE_INFO, values, COL_DATE + " = " + date, null);
     }
 
     public int removeInfo(int id){
@@ -68,9 +73,9 @@ public class InfoBDD {
     }
 
 
-    public Information getInfoWithPas(int pas){
+    public Information getInfoWithDate(Date date){
         //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(TABLE_INFO, new String[] {COL_ID, COL_CALORIES, COL_STEP}, COL_CALORIES + " LIKE \"" + pas +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_INFO, new String[] {COL_ID, COL_CALORIES, COL_STEP}, COL_DATE + " LIKE \"" + date +"\"", null, null, null, null);
         return cursorToLivre(c);
     }
 

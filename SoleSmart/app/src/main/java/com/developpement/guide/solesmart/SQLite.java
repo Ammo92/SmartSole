@@ -16,10 +16,11 @@ public class SQLite extends SQLiteOpenHelper {
     private static final String COL_ID = "ID";
     private static final String COL_CALORIES = "Calorie";
     private static final String COL_STEP = "Pas";
+    private static final String COL_DATE = "Date";
 
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_INFO  + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_CALORIES + " INTEGER NOT NULL, "
-            + COL_STEP+ " INTEGER NOT NULL);";
+            + COL_STEP+ " INTEGER NOT NULL " + COL_DATE + " DATE NOT NULL);";
 
     public SQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

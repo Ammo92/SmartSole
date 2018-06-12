@@ -13,4 +13,6 @@
     <string name="language">Language</string>
     <string name="francais">Français</string>
     <string name="english">English</string>
+    <string name="battery">Battery</string>
+    <string name="bluetooth">Bluetooth</string>
 </resources>
