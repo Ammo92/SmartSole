@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,19 +33,53 @@ import butterknife.OnClick;
 public class Settings extends Fragment implements View.OnClickListener {
 
     Switch bluetoothSwitch;
+    Button french;
+    Button english;
+
+
+
     @Override
     public void onClick(View v) {
-        if(bluetoothSwitch.isChecked()){
-            if (!bluetoothAdapter.isEnabled()) {
-                bluetoothAdapter.enable();
-                Log.e("Bluetooth :", " Activer");
-            }
-        }else{
-            if (bluetoothAdapter.isEnabled()) {
-                bluetoothAdapter.disable();
-                Log.e("Bluetooth :", " Désasctiver");
-            }
+        Context appContext = getContext().getApplicationContext();
+        switch (v.getId()) {
+            case R.id.switchBuetooth:
+                if(bluetoothSwitch.isChecked()){
+                    if (!bluetoothAdapter.isEnabled()) {
+                        bluetoothAdapter.enable();
+                        Log.e("Bluetooth :", " Activer");
+                    }
+                }else{
+                    if (bluetoothAdapter.isEnabled()) {
+                        bluetoothAdapter.disable();
+                        Log.e("Bluetooth :", " Désasctiver");
+                    }
+                }
+                break;
+
+            case R.id.buttonFrench:
+
+
+                String language  = "fr";
+                Locale locale = new Locale(language);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getResources().updateConfiguration(config,  appContext.getResources().getDisplayMetrics());
+                break;
+
+            case R.id.buttonEnglish:
+
+                String languageEn  = "en";
+                Locale localeEn = new Locale(languageEn);
+                Locale.setDefault(localeEn);
+                Configuration configEn = new Configuration();
+                configEn.locale = localeEn;
+                getResources().updateConfiguration(configEn, appContext.getResources().getDisplayMetrics());
+                break;
+
+
         }
+
     }
 
     // TODO: Rename parameter arguments, choose names that match
@@ -100,7 +137,12 @@ public class Settings extends Fragment implements View.OnClickListener {
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
         bluetoothSwitch = rootView.findViewById(R.id.switchBuetooth);
+        french = rootView.findViewById(R.id.buttonFrench);
+        english = rootView.findViewById(R.id.buttonEnglish);
         bluetoothSwitch.setOnClickListener(this);
+        french.setOnClickListener(this);
+        english.setOnClickListener(this);
+
 
         return rootView;
     }

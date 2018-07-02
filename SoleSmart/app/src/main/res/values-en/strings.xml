@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SoleSmart</string>
+    <string name="solesmart">SoleSmart</string>
+    <string name="power">Power</string>
+    <string name="temperature">Temperature</string>
+    <string name="step">Step</string>
+    <string name="batterie">Battery</string>
+    <string name="parametres">Settings</string>
+    <string name="language">Language</string>
+    <string name="francais">French</string>
+    <string name="english">English</string>
+    <string name="battery">Battery</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="accueil">Home</string>
+    <string name="pas">Step</string>
+    <string name="param">Settings</string>
+    <string name="connexion">Connection</string>
+    <string name="calendrier">Calendar</string>
+</resources>

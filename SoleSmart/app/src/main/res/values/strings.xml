@@ -1,18 +1,23 @@
 <resources>
     <string name="app_name">SoleSmart</string>
     <string name="solesmart">SoleSmart</string>
-    <string name="power">Power  </string>
+    <string name="power">Allumer  </string>
     <string name="temperature">Temperature</string>
-    <string name="calendrier">Calendrier</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="step">Step</string>
+    <string name="step">Pas</string>
     <string name="batterie">Batterie</string>
     <string name="parametres">Paramètres</string>
-    <string name="language">Language</string>
+    <string name="language">Langage</string>
     <string name="francais">Français</string>
-    <string name="english">English</string>
-    <string name="battery">Battery</string>
+    <string name="english">Anglais</string>
+    <string name="battery">Batterie</string>
     <string name="bluetooth">Bluetooth</string>
+    <string name="accueil">Accueil</string>
+    <string name="pas">Pas</string>
+    <string name="param">Paramètres</string>
+    <string name="connexion">Connexion</string>
+    <string name="calendrier">Calendrier</string>
 </resources>
