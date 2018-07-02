@@ -1,6 +1,7 @@
 package com.developpement.guide.solesmart;
 
 
+import android.bluetooth.BluetoothAdapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;

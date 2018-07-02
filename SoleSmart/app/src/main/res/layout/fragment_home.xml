@@ -73,13 +73,14 @@
         android:layout_height="180dp"
         app:layout_constraintTop_toBottomOf="@id/titleTemperature"
         app:layout_constraintLeft_toRightOf="@id/Imageleft"
-        app:layout_constraintTop_toTopOf="@id/Imageleft"
-        app:layout_constraintRight_toLeftOf="@id/mySeekBarRight"
-        app:layout_constraintBottom_toBottomOf="@id/Imageleft"
-        android:layout_marginRight="30dp">
+        app:layout_constraintTop_toTopOf="@id/ImageRight"
+        app:layout_constraintBottom_toBottomOf="@id/ImageRight"
+        app:layout_constraintRight_toLeftOf="@id/ImageRight"
+        >
 
         <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
 
+            android:id="@+id/seekbar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:splitTrack="false"
@@ -93,35 +94,10 @@
         android:layout_height="200dp"
         android:src="@drawable/pieddroite"
         app:layout_constraintTop_toBottomOf="@id/titleTemperature"
-        app:layout_constraintLeft_toLeftOf="@id/mySeekBarRight"
         app:layout_constraintEnd_toEndOf="@id/titleTemperature"
+        app:layout_constraintLeft_toRightOf="@id/mySeekBarLeft"
         android:layout_marginTop="30dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/titleTemperature"
-        app:layout_constraintBottom_toTopOf="@id/mySeekBarRight"
-        android:text="30°C"
-        app:layout_constraintStart_toStartOf="@id/mySeekBarRight"
-        app:layout_constraintEnd_toEndOf="@id/mySeekBarRight"
-        />
-
-    <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
-        android:id="@+id/mySeekBarRight"
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
-        app:layout_constraintTop_toBottomOf="@id/titleTemperature"
-        app:layout_constraintRight_toLeftOf="@id/ImageRight"
-        app:layout_constraintLeft_toRightOf="@id/mySeekBarLeft"
-        app:layout_constraintTop_toTopOf="@id/ImageRight"
-        app:layout_constraintBottom_toBottomOf="@id/ImageRight">
-        <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:splitTrack="false"
-            app:seekBarRotation="CW90" /> <!-- Rotation: CW90 or CW270 -->
-    </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
 
 
 </android.support.constraint.ConstraintLayout>

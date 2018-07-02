@@ -151,6 +151,7 @@
         android:id="@+id/switchBuetooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="false"
         app:layout_constraintTop_toBottomOf="@id/valueBattery"
         app:layout_constraintStart_toStartOf="@id/buttonFrench"
         app:layout_constraintTop_toTopOf="@id/titleBluetooth"
