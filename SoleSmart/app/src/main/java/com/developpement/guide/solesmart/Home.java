@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar;
 import com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper;
@@ -40,6 +42,7 @@ public class Home extends Fragment implements View.OnClickListener{
     private String mParam2;
     VerticalSeekBar verticalSeekBarWrapper;
     Switch switchPower;
+    TextView valueTemperature;
     int isPressed = 0;
 
     private OnFragmentInteractionListener mListener;
@@ -85,6 +88,7 @@ public class Home extends Fragment implements View.OnClickListener{
      View layout =  inflater.inflate(R.layout.fragment_home, container, false);
 
         switchPower = layout.findViewById(R.id.power);
+        valueTemperature = layout.findViewById(R.id.valueTemperature);
         verticalSeekBarWrapper = layout.findViewById(R.id.seekbar);
         if(!switchPower.isChecked()){
             if(isPressed == 0) {
@@ -92,6 +96,24 @@ public class Home extends Fragment implements View.OnClickListener{
             }
         }
         switchPower.setOnClickListener(this);
+
+        verticalSeekBarWrapper.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                int temperature = progress + 30;
+                valueTemperature.setText(String.valueOf(temperature)+"°C");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         return  layout;
     }
 

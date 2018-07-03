@@ -8,10 +8,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+
+import java.sql.Date;
 
 
 public class Calendar extends Fragment implements View.OnClickListener{
@@ -64,9 +67,11 @@ public class Calendar extends Fragment implements View.OnClickListener{
         View layout = inflater.inflate(R.layout.fragment_calendar, container, false);
         // Inflate the layout for this fragment
         calendarView = layout.findViewById(R.id.calendarView);
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+
                 AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
                         .create();
                 alertDialog.setCancelable(false);
@@ -83,7 +88,6 @@ public class Calendar extends Fragment implements View.OnClickListener{
             }
         });
 
-       // calendarView.setOnClickListener(this);
         return layout;
     }
 
