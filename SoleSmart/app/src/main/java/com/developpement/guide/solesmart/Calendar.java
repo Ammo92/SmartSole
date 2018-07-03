@@ -1,16 +1,20 @@
 package com.developpement.guide.solesmart;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 
 
-public class Calendar extends Fragment {
+public class Calendar extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -19,6 +23,7 @@ public class Calendar extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    CalendarView calendarView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -56,8 +61,30 @@ public class Calendar extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View layout = inflater.inflate(R.layout.fragment_calendar, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar, container, false);
+        calendarView = layout.findViewById(R.id.calendarView);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                        .create();
+                alertDialog.setCancelable(false);
+                alertDialog.setTitle(dayOfMonth + "/" + month + "/" + year);
+                alertDialog.setMessage("Pas : 0 \n" +
+                        "Calorie : 0 kcal");
+                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+            }
+        });
+
+       // calendarView.setOnClickListener(this);
+        return layout;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,6 +108,11 @@ public class Calendar extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     /**
