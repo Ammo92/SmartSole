@@ -40,6 +40,7 @@ public class Home extends Fragment implements View.OnClickListener{
     private String mParam2;
     VerticalSeekBar verticalSeekBarWrapper;
     Switch switchPower;
+    int isPressed = 0;
 
     private OnFragmentInteractionListener mListener;
 
@@ -85,7 +86,11 @@ public class Home extends Fragment implements View.OnClickListener{
 
         switchPower = layout.findViewById(R.id.power);
         verticalSeekBarWrapper = layout.findViewById(R.id.seekbar);
-        verticalSeekBarWrapper.setEnabled(false);
+        if(!switchPower.isChecked()){
+            if(isPressed == 0) {
+                verticalSeekBarWrapper.setEnabled(false);
+            }
+        }
         switchPower.setOnClickListener(this);
         return  layout;
     }
@@ -117,9 +122,11 @@ public class Home extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if( switchPower.isChecked()){
+            isPressed = 1;
             verticalSeekBarWrapper.setEnabled(true);
             verticalSeekBarWrapper.setProgress(0);
-        }else{
+        }else if(!switchPower.isChecked()){
+            isPressed = 0;
             verticalSeekBarWrapper.setEnabled(false);
         }
 
