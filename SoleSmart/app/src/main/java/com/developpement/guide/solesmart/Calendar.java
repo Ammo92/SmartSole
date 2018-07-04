@@ -91,7 +91,7 @@ public class Calendar extends Fragment implements View.OnClickListener{
                 if(test == null){
                     alertDialog.setMessage("Pas : 0\nCalorie : 0 kcal");
                 }else{
-                    alertDialog.setMessage("Pas :" + test.getPas() + "\nCalorie : " + test.getCalorie()  +" kcal");
+                    alertDialog.setMessage("Pas : " + test.getPas() + "\nCalorie : " + test.getCalorie()  +" kcal");
                 }
 
 
