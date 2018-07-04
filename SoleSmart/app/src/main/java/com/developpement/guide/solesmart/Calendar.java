@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.icu.text.IDNA;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,6 +30,9 @@ public class Calendar extends Fragment implements View.OnClickListener{
     private String mParam1;
     private String mParam2;
     CalendarView calendarView;
+    Context context;
+    InfoBDD information;
+    Information test;
 
     private OnFragmentInteractionListener mListener;
 
@@ -59,6 +65,9 @@ public class Calendar extends Fragment implements View.OnClickListener{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        context = getContext();
+        information = new InfoBDD(context);
+
     }
 
     @Override
@@ -67,24 +76,33 @@ public class Calendar extends Fragment implements View.OnClickListener{
         View layout = inflater.inflate(R.layout.fragment_calendar, container, false);
         // Inflate the layout for this fragment
         calendarView = layout.findViewById(R.id.calendarView);
-
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
-                AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
-                        .create();
-                alertDialog.setCancelable(false);
-                alertDialog.setTitle(dayOfMonth + "/" + month + "/" + year);
-                alertDialog.setMessage("Pas : 0 \n" +
-                        "Calorie : 0 kcal");
-                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                alertDialog.show();
+                String dateChoose = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
+                test = information.getInfoWithDate(dateChoose);
+
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity())
+                            .create();
+                alertDialog.setCancelable(false);
+                    alertDialog.setTitle(dateChoose);
+                if(test == null){
+                    alertDialog.setMessage("Pas : 0\nCalorie :0 kcal");
+                }else{
+                    alertDialog.setMessage("Pas :" + test.getPas() + "\nCalorie : " + test.getCalorie()  +" kcal");
+                }
+
+
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    alertDialog.show();
+
             }
         });
 

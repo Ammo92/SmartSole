@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.text.IDNA;
+import android.util.Log;
 
 import java.sql.Date;
 
@@ -27,7 +28,8 @@ public class InfoBDD {
     private static final String COL_DATE = "Date";
     private static final int NUM_COL_DATE = 3;
 
-    private SQLiteDatabase bdd;
+    private SQLiteDatabase bdd ;
+
 
     private SQLite maBaseSQLite;
 
@@ -48,17 +50,21 @@ public class InfoBDD {
     }
 
     public long insertInfo(Information info){
+
+        open();
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associée à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
         values.put(COL_CALORIES, info.getCalorie());
         values.put(COL_STEP, info.getPas());
-        values.put(COL_DATE,  String.valueOf(info.getDate()));
+        values.put(COL_DATE,  info.getDate());
         //on insère l'objet dans la BDD via le ContentValues
-        return bdd.insert(TABLE_INFO, null, values);
+
+        return  bdd.insert(TABLE_INFO, null, values);
     }
 
-    public int updateInfo(Date date, Information info){
+    public int updateInfo(String date, Information info){
+
         //La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simplement préciser quel livre on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
@@ -68,21 +74,26 @@ public class InfoBDD {
     }
 
     public int removeInfo(int id){
+        open();
         //Suppression d'un livre de la BDD grâce à l'ID
         return bdd.delete(TABLE_INFO, COL_ID + " = " +id, null);
     }
 
 
-    public Information getInfoWithDate(Date date){
+    public Information getInfoWithDate(String date){
+        open();
         //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
         Cursor c = bdd.query(TABLE_INFO, new String[] {COL_ID, COL_CALORIES, COL_STEP}, COL_DATE + " LIKE \"" + date +"\"", null, null, null, null);
+        Log.e("Requete : ",String.valueOf(c));
         return cursorToLivre(c);
     }
 
     private Information cursorToLivre(Cursor c){
         //si aucun élément n'a été retourné dans la requête, on renvoie null
-        if (c.getCount() == 0)
+        if (c.getCount() == 0){
             return null;
+        }
+
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();

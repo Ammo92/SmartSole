@@ -10,12 +10,12 @@ public class Information {
     private int id;
     private int calorie;
     private int pas;
-    private Date date;
+    private String date;
 
 
     public Information(){}
 
-    public Information(int calorie, int pas,  Date date) {
+    public Information(int calorie, int pas,  String date) {
         this.calorie = calorie;
         this.pas = pas;
         this.date = date;
@@ -45,7 +45,7 @@ public class Information {
         this.pas = pas;
     }
 
-    public Date getDate() { return date;}
+    public String getDate() { return date;}
 
-    public void setDate(Date date) { this.date = date; }
+    public void setDate(String date) { this.date = date; }
 }
