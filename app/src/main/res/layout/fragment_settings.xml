@@ -1,0 +1,160 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.developpement.guide.solesmart.Calendar">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solesmart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:fontFamily="casual"
+        android:layout_marginTop="25dp"
+        />
+
+    <TextView
+        android:id="@+id/settingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:text="@string/parametres"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"/>
+
+
+    <ImageView
+        android:id="@+id/langageImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/world"
+        app:layout_constraintBottom_toBottomOf="@id/titleLanguage"
+        app:layout_constraintTop_toTopOf="@+id/titleLanguage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="15dp"
+        />
+
+
+    <TextView
+        android:id="@+id/titleLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/guideLineSettings"
+        android:text="@string/language"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/langageImage"
+        android:layout_marginLeft="15dp"
+        />
+
+    <Button
+        android:id="@+id/buttonFrench"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/titleLanguage"
+        app:layout_constraintTop_toTopOf="@id/titleLanguage"
+        app:layout_constraintBottom_toBottomOf="@id/titleLanguage"
+        android:text="@string/francais"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_marginLeft="25dp"/>
+
+    <Button
+        android:id="@+id/buttonEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/buttonFrench"
+        app:layout_constraintTop_toTopOf="@id/titleLanguage"
+        app:layout_constraintBottom_toBottomOf="@id/titleLanguage"
+        android:text="@string/english"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/imageBattery"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/battery"
+        app:layout_constraintTop_toBottomOf="@id/langageImage"
+        app:layout_constraintStart_toStartOf="@id/langageImage"
+        app:layout_constraintEnd_toEndOf="@id/langageImage"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideLineSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40"
+        />
+
+    <TextView
+        android:id="@+id/titleBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/titleLanguage"
+        app:layout_constraintStart_toStartOf="@id/titleLanguage"
+        app:layout_constraintTop_toTopOf="@id/imageBattery"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:text="@string/battery"/>
+
+    <TextView
+        android:id="@+id/valueBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/buttonFrench"
+        app:layout_constraintStart_toStartOf="@id/buttonFrench"
+        app:layout_constraintEnd_toEndOf="@id/buttonFrench"
+        app:layout_constraintTop_toTopOf="@id/titleBattery"
+        app:layout_constraintBottom_toBottomOf="@id/titleBattery"
+        android:text="75%"
+        android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/imageBluetooth"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/imageBattery"
+        app:layout_constraintStart_toStartOf="@id/imageBattery"
+        app:layout_constraintEnd_toEndOf="@id/imageBattery"
+        android:src="@drawable/bluetooth"/>
+
+    <TextView
+        android:id="@+id/titleBluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/titleBattery"
+        app:layout_constraintStart_toStartOf="@id/titleBattery"
+        app:layout_constraintTop_toTopOf="@id/imageBluetooth"
+        app:layout_constraintBottom_toBottomOf="@id/imageBluetooth"
+        android:text="@string/bluetooth"
+        android:textSize="20sp"
+        android:fontFamily="casual"
+        android:textStyle="bold"/>
+
+    <Switch
+        android:id="@+id/switchBuetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        app:layout_constraintTop_toBottomOf="@id/valueBattery"
+        app:layout_constraintStart_toStartOf="@id/buttonFrench"
+        app:layout_constraintTop_toTopOf="@id/titleBluetooth"
+        app:layout_constraintBottom_toBottomOf="@id/titleBluetooth"/>
+
+</android.support.constraint.ConstraintLayout>
